@@ -44,6 +44,7 @@ function loop() {
     moveInimigo1();
     moveInimigo2();
     moveAmigo();
+    colisao();
 }
 
 //pega 
@@ -145,4 +146,13 @@ function disparo() {
 
         }
     }
+}
+
+//identifica a colisão entre os helicopteros
+function colisao() {
+    var colisao1 = ($("#jogador").collision($("#inimigo1")));
+    // jogador com o inimigo1
+
+    console.log(colisao1);
+
 }
