@@ -152,7 +152,37 @@ function disparo() {
 function colisao() {
     var colisao1 = ($("#jogador").collision($("#inimigo1")));
     // jogador com o inimigo1
+    // se for maior que 0 houve colisão
+    if (colisao1.length > 0) {
 
-    console.log(colisao1);
+        inimigo1X = parseInt($("#inimigo1").css("left"));
+        inimigo1Y = parseInt($("#inimigo1").css("top"));
+        explosao1(inimigo1X, inimigo1Y);
+
+        posicaoY = parseInt(Math.random() * 334);
+        $("#inimigo1").css("left", 694);
+        $("#inimigo1").css("top", posicaoY);
+    }
+
+}
+
+//Explosão 1
+function explosao1(inimigo1X, inimigo1Y) {
+    $("#fundoGame").append("<div id='explosao1'></div");
+    $("#explosao1").css("background-image", "url(imgs/explosao.png)");
+    var div = $("#explosao1");
+    div.css("top", inimigo1Y);
+    div.css("left", inimigo1X);
+    div.animate({ width: 300, opacity: 0 }, "slow");
+
+    var tempoExplosao = window.setInterval(removeExplosao, 1000);
+
+    function removeExplosao() {
+
+        div.remove();
+        window.clearInterval(tempoExplosao);
+        tempoExplosao = null;
+
+    }
 
 }
