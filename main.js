@@ -7,6 +7,7 @@ function start() {
     $("#fundoGame").append("<div id='inimigo2'></div>");
     $("#fundoGame").append("<div id='amigo' class='anima3'></div>");
     $("#fundoGame").append("<div id='placar'></div>");
+    $("#fundoGame").append("<div id='energia'></div>");
 }
 
 // variaveis do jogo
@@ -29,6 +30,8 @@ var posicaoY = parseInt(Math.random() * 334);
 var podeAtirar = true;
 
 jogo.pressionou = [];
+
+var energiaAtual=3;
 
 //Verifica se o usuário pressionou alguma tecla	
 $(document).keydown(function (e) {
@@ -53,6 +56,7 @@ function loop() {
     moveAmigo();
     colisao();
     placar();
+    energia();
 }
 
 //pega 
@@ -168,6 +172,7 @@ function colisao() {
     // jogador com o inimigo1
     // se for maior que 0 houve colisão
     if (colisao1.length > 0) {
+        energiaAtual--;
 
         inimigo1X = parseInt($("#inimigo1").css("left"));
         inimigo1Y = parseInt($("#inimigo1").css("top"));
@@ -179,6 +184,7 @@ function colisao() {
     }
     //colisao do jogador com o inimigo 2
     if (colisao2.length > 0) {
+        energiaAtual--;
 
         inimigo2X = parseInt($("#inimigo2").css("left"));
         inimigo2Y = parseInt($("#inimigo2").css("top"));
@@ -332,3 +338,29 @@ function placar() {
 	$("#placar").html("<h2> Pontos: " + pontos + " Salvos: " + salvos + " Perdidos: " + perdidos + "</h2>");
 	
 } 
+
+function energia() {
+	
+    if (energiaAtual==3) {
+        
+        $("#energia").css("background-image", "url(imgs/energia3.png)");
+    }
+
+    if (energiaAtual==2) {
+        
+        $("#energia").css("background-image", "url(imgs/energia2.png)");
+    }
+
+    if (energiaAtual==1) {
+        
+        $("#energia").css("background-image", "url(imgs/energia1.png)");
+    }
+
+    if (energiaAtual==0) {
+        
+        $("#energia").css("background-image", "url(imgs/energia0.png)");
+        
+        //Game Over
+    }
+
+}
