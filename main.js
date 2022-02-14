@@ -6,10 +6,17 @@ function start() {
     $("#fundoGame").append("<div id='inimigo1' class='anima2'></div>");
     $("#fundoGame").append("<div id='inimigo2'></div>");
     $("#fundoGame").append("<div id='amigo' class='anima3'></div>");
+    $("#fundoGame").append("<div id='placar'></div>");
 }
 
 // variaveis do jogo
 var jogo = {};
+var fimdejogo = false;
+
+var pontos=0;
+var salvos=0;
+var perdidos=0;
+
 var tecla = {
     W: 87,
     S: 83,
@@ -20,8 +27,6 @@ var velocidade = 5;
 var posicaoY = parseInt(Math.random() * 334);
 
 var podeAtirar = true;
-
-var fimdejogo = false;
 
 jogo.pressionou = [];
 
@@ -47,6 +52,7 @@ function loop() {
     moveInimigo2();
     moveAmigo();
     colisao();
+    placar();
 }
 
 //pega 
@@ -185,7 +191,7 @@ function colisao() {
     }
     //colisão entre o disparo e o helicoptero inimigo
     if (colisao3.length > 0) {
-
+        pontos=pontos+100;
 
         inimigo1X = parseInt($("#inimigo1").css("left"));
         inimigo1Y = parseInt($("#inimigo1").css("top"));
@@ -200,6 +206,7 @@ function colisao() {
     }
     //colisão entre disparo e caminhão inimigo
     if (colisao4.length > 0) {
+        pontos=pontos+50;
 
         inimigo2X = parseInt($("#inimigo2").css("left"));
         inimigo2Y = parseInt($("#inimigo2").css("top"));
@@ -213,12 +220,14 @@ function colisao() {
     }
     //colisão entre helicoptero e amigo
     if (colisao5.length > 0) {
+        salvos++;
 
         reposicionaAmigo();
         $("#amigo").remove();
     }
     //colisão entre amigo e caminhão
     if (colisao6.length > 0) {
+        perdidos++;
 
         amigoX = parseInt($("#amigo").css("left"));
         amigoY = parseInt($("#amigo").css("top"));
@@ -317,3 +326,9 @@ function explosao3(amigoX, amigoY) {
     }
 
 }
+
+function placar() {
+	
+	$("#placar").html("<h2> Pontos: " + pontos + " Salvos: " + salvos + " Perdidos: " + perdidos + "</h2>");
+	
+} 
