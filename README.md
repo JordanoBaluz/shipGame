@@ -1,5 +1,5 @@
 # shipGame
-#####Projeto desenvolvido para o bootcamp **Take Web Developer**
+##### Projeto desenvolvido para o bootcamp **Take Web Developer**
 
 [![shipGame](https://media2.giphy.com/media/JkGkPOiRFqCm63pRQV/giphy.gif?cid=790b7611af25fc99b92deaa0bdd2b25b0d83fbfb8875018d&rid=giphy.gif&ct=g "shipGame")](https://media2.giphy.com/media/JkGkPOiRFqCm63pRQV/giphy.gif?cid=790b7611af25fc99b92deaa0bdd2b25b0d83fbfb8875018d&rid=giphy.gif&ct=g "shipGame")
 
